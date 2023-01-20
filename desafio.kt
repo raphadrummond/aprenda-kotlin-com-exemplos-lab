@@ -1,58 +1,44 @@
-enum class Nivel { INICIANTE, INTERMEDIARIO, DIFICIL }
+import java.util.Scanner
+// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
+val scanner = Scanner(System.`in`)
 
-data class Usuario(val nome: String, val id: Long)
+enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
-data class ConteudoEducacional(val nome: String, val stack: String, val duracao: Int = 60)
+class Usuario
+class Usuario(name: String, email: String)
 
-data class Formacao(val nome: String, val conteudos: List<ConteudoEducacional>, val nivel: Nivel) {
+data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
+data class ConteudoEducacional(var nome: String, val duracao: Int = 60, val dificuldade: Nivel)
+
+data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
 
     val inscritos = mutableListOf<Usuario>()
 
-    infix fun matricular(usuario: Usuario) { inscritos.add(usuario) }
-
-    fun matricular(vararg usuarios: Usuario){
-        for(usuario in usuarios)
-            inscritos.add(usuario)
-    }
-
-    fun mostrarConteudos(){
-        for(conteudo in conteudos)
-            println(conteudo.nome)
-    }
-
-    fun mostrarInscritos(){
-        for(inscrito in inscritos)
-            println(inscrito.nome)
+    fun matricular(usuario: Usuario) {
+        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+        inscritos.add(usuario)
     }
 }
 
+fun matricularAluno() {
+    println("Nome do aluno: ")
+    name = scanne.nextLine()
+    println("Email do aluno: ")
+    email = scanne.nextLine()
+    val user: Usuario = Usuario(name, email)
+    kotlinExperience.matricular(user)
+    println("O aluno $name foi matriculado com sucesso!")
+}
+
 fun main() {
-    // Criando os usuários
-    val julia = Usuario("Júlia", 1L)
-    val andrey = Usuario("Andrey", 2L)
-    val osmar = Usuario("Osmar", 3L)
-    val bruna = Usuario("Bruna", 4L)
+    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
+    val content: ConteudoEducacional = ("Conhecendo o Kotlin e Sua Documentação Oficial", 1, Nivel.BASICO)
+    val ContentList = arrayListOf<ConteudoEducacional>(content)
+    val user1: Usuario = Usuario("João", "joao@teste.com")
+    val user2: Usuario = Usuario("Maria", "maria@teste.com")
+    val kotlinExperience: Formacao = Formacao("Dominando a linguagem de programação Kotlin", contentList)
+    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+}
 
-    // Criando a lista de conteúdos da formação
-    val listaConteudosKotlin: List<ConteudoEducacional> = listOf(
-        ConteudoEducacional("Introdução ao Desenvolvimento Moderno de Software","Kotlin"),
-        ConteudoEducacional("Java e Sua História","Java"),
-        ConteudoEducacional("Orientação a Objetos - POO","Java"),
-    	ConteudoEducacional("Arquiteturas e Organizações Computacionais","Fundamentos Hardware"))
-
-    // Criando a formação para Kotlin
-    val kotlinExperience = Formacao("Kotlin Experience", listaConteudosKotlin, Nivel.INICIANTE)
-
-    // Verificando se a variável de formação não é nula, caso não seja, matriculando alunos
-    kotlinExperience?.let{
-        kotlinExperience.matricular(andrey, osmar, bruna, julia)
-    }
-
-    // Imprimindo na tela
-    println("Formação: ${kotlinExperience.nome}\n\t\tConteúdos:")
-    kotlinExperience.mostrarConteudos()
-    println("\t\tInscritos:")
-    kotlinExperience.mostrarInscritos()
-    println("____________________________________________________________")
-
+    matricularAluno()
 }
