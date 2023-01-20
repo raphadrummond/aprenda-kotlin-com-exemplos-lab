@@ -4,10 +4,8 @@ val scanner = Scanner(System.`in`)
 
 enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
-class Usuario
 class Usuario(name: String, email: String)
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
 data class ConteudoEducacional(var nome: String, val duracao: Int = 60, val dificuldade: Nivel)
 
 data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
